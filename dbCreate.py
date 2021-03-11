@@ -7,24 +7,21 @@ conn = mydb.connect()
 curseur = conn.cursor()
 
 # makes tables in database
-sqlCreateTechTable = f"CREATE TABLE Technicien( id BIGINT," \
+sqlCreateTechTable = f"CREATE TABLE Technicien( id INTEGER PRIMARY KEY," \
                  f"                             nom VARCHAR(15), " \
-                 f"                             prenom VARCHAR(15), " \
-                 f"                             PRIMARY KEY(id))"
+                 f"                             prenom VARCHAR(15))"
 
-sqlCreateClientTable = f"CREATE TABLE Client( id_Client BIGINT, " \
+sqlCreateClientTable = f"CREATE TABLE Client( id_Client INTEGER PRIMARY KEY , " \
                        f"                     nom VARCHAR(15), " \
-                       f"                     adresse VARCHAR(50), " \
-                       f"                     PRIMARY KEY(Id_Client))"
+                       f"                     adresse VARCHAR(50))"
 
-sqlCreateInterventionTable = f"CREATE TABLE Intervention(Id_Intervention BIGINT," \
+sqlCreateInterventionTable = f"CREATE TABLE Intervention(Id_Intervention INTEGER PRIMARY KEY," \
                              f"                          libelle VARCHAR(50)," \
                              f"                          actif BOOLEAN," \
                              f"                          debut DATETIME," \
                              f"                          fin DATETIME," \
                              f"                          id_Client BIGINT NOT NULL," \
                              f"                          id BIGINT NOT NULL," \
-                             f"                          PRIMARY KEY(id_Intervention)," \
                              f"                          FOREIGN KEY(id_Client) REFERENCES Client(Id_Client)," \
                              f"                          FOREIGN KEY(id) REFERENCES Technicien(id))"
 
