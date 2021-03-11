@@ -1,18 +1,19 @@
 from dbConnect import DbConnect
-from Domain.intervention import Intervention
 
 ################################################
 # that file should care of database operations #
 ################################################
 
-# Objet à insérer
-# inter2 = Intervention("Television ecran vert", "Passif")
 
-# get database connexion
-connexion = DbConnect("EasyDb").getconnection()
-curseur = connexion.cursor()
 
-cmd = f"select * from Intervention"
+class InsertDb:
+    def __init__(self):
+        self.connexion = DbConnect("EasyDb").getconnection()
 
-curseur.execute(cmd)
-connexion.commit()
+    def intervention(self, idClient, libelle, idTech):
+        cmd = f"insert into intervention(id_Client, libelle, id_Tech ) " \
+              f"values('{idClient}', '{libelle}', '{idTech}')"
+        conn = self.connexion
+        conn.cursor().execute(cmd)
+        conn.commit()
+        return

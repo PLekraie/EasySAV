@@ -7,7 +7,7 @@ conn = mydb.connect()
 curseur = conn.cursor()
 
 # makes tables in database
-sqlCreateTechTable = f"CREATE TABLE Technicien( id INTEGER PRIMARY KEY," \
+sqlCreateTechTable = f"CREATE TABLE Technicien( id_Tech INTEGER PRIMARY KEY," \
                  f"                             nom VARCHAR(15), " \
                  f"                             prenom VARCHAR(15))"
 
@@ -20,10 +20,10 @@ sqlCreateInterventionTable = f"CREATE TABLE Intervention(Id_Intervention INTEGER
                              f"                          actif BOOLEAN," \
                              f"                          debut DATETIME," \
                              f"                          fin DATETIME," \
-                             f"                          id_Client BIGINT NOT NULL," \
-                             f"                          id BIGINT NOT NULL," \
+                             f"                          id_Client INTEGER NOT NULL," \
+                             f"                          id_Tech INTEGER NOT NULL," \
                              f"                          FOREIGN KEY(id_Client) REFERENCES Client(Id_Client)," \
-                             f"                          FOREIGN KEY(id) REFERENCES Technicien(id))"
+                             f"                          FOREIGN KEY(id_Tech) REFERENCES Technicien(id_Tech))"
 
 curseur.execute(sqlCreateTechTable)
 curseur.execute(sqlCreateClientTable)
@@ -63,6 +63,7 @@ for client in list:
     curseur.execute(cmd)
 
 conn.commit()
+conn.close()
 
 
 
