@@ -1,8 +1,11 @@
 from Domain.technicien import Technicien
 from Domain.client import Client
 from dbInit import DbInit
+from globalVar import GlobalVar
 
-mydb = DbInit("EasyDb")
+"""get object to operate on database"""
+mydb = DbInit(GlobalVar.DB_PATH)
+
 conn = mydb.connect()
 curseur = conn.cursor()
 
@@ -21,7 +24,7 @@ sqlCreateInterventionTable = f"CREATE TABLE Intervention(Id_Intervention INTEGER
                              f"                          debut DATETIME," \
                              f"                          fin DATETIME," \
                              f"                          id_Client INTEGER NOT NULL," \
-                             f"                          id_Tech INTEGER NOT NULL," \
+                             f"                          id_Tech INTEGER," \
                              f"                          FOREIGN KEY(id_Client) REFERENCES Client(Id_Client)," \
                              f"                          FOREIGN KEY(id_Tech) REFERENCES Technicien(id_Tech))"
 
