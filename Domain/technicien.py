@@ -4,7 +4,7 @@ from Domain.intervention import Intervention
 
 
 class Technicien:
-    def __init__(self, id, nom, prenom ):
+    def __init__(self, id, nom, prenom):
         self.id = id
         self.nom = nom
         self.prenom = prenom

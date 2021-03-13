@@ -6,4 +6,3 @@ class Intervention:
         self.duree = 0
         self.id_technicien = None
         self.id_client = id_client
-

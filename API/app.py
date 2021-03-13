@@ -1,13 +1,16 @@
 from flask import Flask, jsonify, request, Response
 from DataAccess.accessDatabase import AccessDatabase
+from creationScript import create_database
+from insertionScript import insertion_database
 
 app = Flask(__name__)
 
-@app.route('/api/interventions')
+@app.route('/api/interventions', methods=['GET'])
 def get_interventions():
     #Retrieve intervention from database via DataAccess file
-    dico = AccessDatabase.select_interventions()
-    return jsonify(dico);
+    access = AccessDatabase()
+    dico = access.select_interventions()
+    return jsonify(dico)
 
 @app.route('/api/interventions/add', methods=['POST'])
 def post_intervention():
