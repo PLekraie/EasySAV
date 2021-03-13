@@ -39,3 +39,12 @@ class Intervention:
         }
         return dico
 
+    def getAll(self):
+        dbobj = DbOp()
+        records = dbobj.getAllIntervention()
+        interventions = []
+        for row in records:
+            my_inter = Intervention()
+            my_inter.createFromRecord(row[1], row[5])
+            interventions.append(my_inter)
+        return interventions

@@ -35,6 +35,12 @@ class MyTestCase(unittest.TestCase):
         for row in records:
             print(row)
 
+    def test_getAllIntervention(self):
+        dbobj = DbOp()
+        records = dbobj.getAllIntervention()
+        for row in records:
+            print(row)
+
 
 if __name__ == '__main__':
     unittest.main()

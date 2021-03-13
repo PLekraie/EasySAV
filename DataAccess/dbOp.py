@@ -8,7 +8,7 @@ class DbOp:
     DB_LOCATION = GlobalVar.DB_PATH
 
     def __init__(self):
-        self.connection = sqlite3.connect(DbOp.DB_LOCATION)
+        self.connection = sqlite3.connect("../EasyDb")
         self.cursor = self.connection.cursor()
 
     def close(self):
@@ -28,6 +28,11 @@ class DbOp:
               f"INNER JOIN Technicien " \
               f"USING(id_Tech) " \
               f"WHERE Technicien.prenom = '{prenom}'"
+        list = self.get_from_db(cmd)
+        return list
+
+    def getAllIntervention(self):
+        cmd = f"SELECT * FROM Intervention "
         list = self.get_from_db(cmd)
         return list
 

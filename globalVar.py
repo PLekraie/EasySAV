@@ -3,4 +3,4 @@ import os
 
 """get root project path"""
 class GlobalVar:
-    DB_PATH = "/home/lmahidi/Epsi/cours_B3/python/PrepaTPGrpB/EasySAV/EasySAV/EasyDb"
+    DB_PATH = "D:\developpement\jetbrains\PycharmProjects\projetSAV\EasyDb"
